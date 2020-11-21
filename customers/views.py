@@ -8,13 +8,13 @@ from customers.serializer import CustomerSerializer
 
 
 class CustomerListCreateAPIView(generics.ListCreateAPIView):
-    # permission_classes = IsAuthenticated
+    permission_classes = [IsAuthenticated]
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
 
 
 class CustomerRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
-    # permission_classes = IsAuthenticated
+    permission_classes = [IsAuthenticated]
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
 
