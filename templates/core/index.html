@@ -7,7 +7,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Home</title>
 	<base href="/">
-	<link rel="icon" type="image/x-icon" href="favicon.ico">
 	<!-- index.html -->
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 		<!-- Custom fonts for this template-->
@@ -22,11 +21,13 @@
 </head>
 <body>
 <app-root>Loading...</app-root>
-{#<script type="text/javascript" src="{% static 'frontend/dist/frontend/polyfill.js' %}"></script>#}
-{#<script type="text/javascript" src="{% static 'frontend/dist/frontend/main.js' %}"></script>#}
-{#<script type="text/javascript" src="{% static 'frontend/dist/frontend/runtime.js' %}"></script>#}
-{#<script type="text/javascript" src="{% static 'frontend/dist/frontend/vendor.js' %}"></script>#}
-{#<link href="{% static 'frontend/dist/frontend/styles.css' %}" rel="stylesheet">#}
+
+<script type="text/javascript" src="{% static 'frontend/dist/frontend/polyfills.js' %}"></script>
+<script type="text/javascript" src="{% static 'frontend/dist/frontend/main.js' %}"></script>
+<script type="text/javascript" src="{% static 'frontend/dist/frontend/runtime.js' %}"></script>
+<script type="text/javascript" src="{% static 'frontend/dist/frontend/vendor.js' %}"></script>
+<link href="{% static 'frontend/dist/frontend/styles.css' %}" rel="stylesheet">
+
 <div class="container" style="padding: 30px;">
 	<a href="{% url 'home' %}" style="padding-left: 5%;" title="Go Home"><i class="fas fa-home fa-lg"
 																																					style="color: #5a6268;"></i> </a>
@@ -36,11 +37,5 @@
 	<h4 class="text-center" style="margin-bottom:25px;">By <a href="https://vitorcunha.me">Vítor Cunha</a></h4>
 </div>
 
-
-<script type="text/javascript" src="/static/frontend/dist/frontend/polyfills.js"></script>
-<script type="text/javascript" src="/static/frontend/dist/frontend/main.js"></script>
-<script type="text/javascript" src="/static/frontend/dist/frontend/runtime.js"></script>
-<script type="text/javascript" src="/static/frontend/dist/frontend/vendor.js"></script>
-<link href="/static/frontend/dist/frontend/styles.css" rel="stylesheet">
 </body>
 </html>
