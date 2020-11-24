@@ -2,7 +2,10 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
-const baseUrl = 'http://localhost:8000/api/customers/';
+// for development
+// const baseUrl = 'http://localhost:8000/api/customers/';
+
+const baseUrl = 'https://neoprospecta-test.herokuapp.com/';
 
 @Injectable({
   providedIn: 'root',
