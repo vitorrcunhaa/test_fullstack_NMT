@@ -1,0 +1,46 @@
+<div style="width: 400px; margin: auto;">
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          required
+          [(ngModel)]="customer.name"
+          name="name"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input
+          class="form-control"
+          id="age"
+          required
+          [(ngModel)]="customer.age"
+          name="age"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="city">City</label>
+        <input
+          class="form-control"
+          id="city"
+          required
+          [(ngModel)]="customer.city"
+          name="city"
+        />
+      </div>
+
+      <button (click)="saveCustomer()" class="btn btn-success">Submit</button>
+    </div>
+
+    <div *ngIf="submitted">
+      <h4>Added Successfully!</h4>
+      <button class="btn btn-success" (click)="newCustomer()">Add</button>
+    </div>
+  </div>
+</div>

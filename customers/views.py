@@ -5,6 +5,15 @@ from rest_framework.permissions import IsAuthenticated
 from customers.models import Customer
 from customers.serializer import CustomerSerializer
 
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+
+
+class CsrfExemptSessionAuthentication(SessionAuthentication):
+
+    # To not perform the csrf check previously happening
+    def enforce_csrf(self, request):
+        return
+
 
 class IsOwner(permissions.BasePermission):
 
@@ -13,6 +22,7 @@ class IsOwner(permissions.BasePermission):
 
 
 class CustomerListCreateAPIView(generics.ListCreateAPIView):
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
     permission_classes = [IsAuthenticated, IsOwner]
     serializer_class = CustomerSerializer
 
@@ -28,6 +38,7 @@ class CustomerListCreateAPIView(generics.ListCreateAPIView):
 
 
 class CustomerRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
     permission_classes = [IsAuthenticated, IsOwner]
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
