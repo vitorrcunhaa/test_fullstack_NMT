@@ -22,17 +22,11 @@
 <body>
 <app-root>Loading...</app-root>
 
-<script src="../../static/frontend/dist/frontend/polyfills.js"></script>
-<script src="../../static/frontend/dist/frontend/main.js"></script>
-<script src="../../static/frontend/dist/frontend/runtime.js"></script>
-<script src="../../static/frontend/dist/frontend/vendor.js"></script>
-<link rel="stylesheet" href="../../static/frontend/dist/frontend/styles.css">
-
-{#<script type="text/javascript" src="{% static 'frontend/dist/frontend/polyfills.js' %}"></script>#}
-{#<script type="text/javascript" src="{% static 'frontend/dist/frontend/main.js' %}"></script>#}
-{#<script type="text/javascript" src="{% static 'frontend/dist/frontend/runtime.js' %}"></script>#}
-{#<script type="text/javascript" src="{% static 'frontend/dist/frontend/vendor.js' %}"></script>#}
-{#<link href="{% static 'frontend/dist/frontend/styles.css' %}" rel="stylesheet">#}
+<script type="text/javascript" src="{% static 'frontend/dist/frontend/polyfills.js' %}"></script>
+<script type="text/javascript" src="{% static 'frontend/dist/frontend/main.js' %}"></script>
+<script type="text/javascript" src="{% static 'frontend/dist/frontend/runtime.js' %}"></script>
+<script type="text/javascript" src="{% static 'frontend/dist/frontend/vendor.js' %}"></script>
+<link href="{% static 'frontend/dist/frontend/styles.css' %}" rel="stylesheet">
 
 <div class="container" style="padding: 30px;">
 	<a href="{% url 'home' %}" style="padding-left: 5%;" title="Go Home"><i class="fas fa-home fa-lg"
