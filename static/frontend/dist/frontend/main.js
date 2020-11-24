@@ -29,7 +29,7 @@ __webpack_require__.r(__webpack_exports__);
 
 // for development
 // const baseUrl = 'http://localhost:8000/api/customers/';
-const baseUrl = 'https://neoprospecta-test.herokuapp.com/';
+const baseUrl = 'https://neoprospecta-test.herokuapp.com/api/customers/';
 class CustomerService {
     constructor(http) {
         this.http = http;

@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 // for development
 // const baseUrl = 'http://localhost:8000/api/customers/';
 
-const baseUrl = 'https://neoprospecta-test.herokuapp.com/';
+const baseUrl = 'https://neoprospecta-test.herokuapp.com/api/customers/';
 
 @Injectable({
   providedIn: 'root',
