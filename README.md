@@ -2,7 +2,7 @@ You can see this application running in production here:
 https://neoprospecta-test.herokuapp.com/
 
 # test-fullstack-NMT
-Deve ser construída uma aplicação para listar e editar clientes utilizando Angular 8+ e outra em Django 2+. O Frontend em Angular deve interagir com o Backend por meio de uma API REST em Django, para exibir e permitir editar uma lista de clientes.
+An application must be built to list and edit clients using Angular 8+ and another in Django 2+. The Angular Frontend must interact with the Backend through a Django REST API, to display and allow editing a list of clients.
 
 
 ## Running the app on your local computer (dev envinronment)
