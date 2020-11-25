@@ -21,7 +21,7 @@ and comment this line:
 
 This way, when building the dist files for the backend to read, it's going to accept API calls for the url used in development env.
 
-Go to static/frontend folder
+Go to `static/frontend folder`
 
 Run `npm install`
 
