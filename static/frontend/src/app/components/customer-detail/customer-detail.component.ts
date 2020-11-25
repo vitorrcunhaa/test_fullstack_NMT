@@ -46,7 +46,7 @@ export class CustomerDetailComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response);
-          this.message = 'The customer ' + this.currentCustomer.name + 'was updated successfully!';
+          this.message = 'The customer ' + this.currentCustomer.name + ' was updated successfully!';
         },
         error => {
           console.log(error);
@@ -64,5 +64,9 @@ export class CustomerDetailComponent implements OnInit {
         error => {
           console.log(error);
         });
+  }
+
+  goHome(): void {
+    this.router.navigate(['/customers']);
   }
 }

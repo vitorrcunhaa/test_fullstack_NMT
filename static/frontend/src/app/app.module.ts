@@ -7,8 +7,10 @@ import { AddCustomerComponent } from './components/add-customer/add-customer.com
 import { CustomerDetailComponent } from './components/customer-detail/customer-detail.component';
 import { CustomerListComponent } from './components/customer-list/customer-list.component';
 
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    DataTablesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

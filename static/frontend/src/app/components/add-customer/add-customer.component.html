@@ -7,20 +7,25 @@
           type="text"
           class="form-control"
           id="name"
-          required
+          required="required"
           [(ngModel)]="customer.name"
           name="name"
+          placeholder="Joao Silva"
         />
       </div>
 
       <div class="form-group">
         <label for="age">Age</label>
-        <input
+        <input type="number"
           class="form-control"
           id="age"
-          required
+          required="required"
           [(ngModel)]="customer.age"
           name="age"
+          placeholder="30"
+         [maxLength]=3
+          min="1"
+          max="150"
         />
       </div>
 
@@ -29,18 +34,21 @@
         <input
           class="form-control"
           id="city"
-          required
+          required="required"
           [(ngModel)]="customer.city"
           name="city"
+          placeholder="Floripa"
         />
       </div>
 
-      <button (click)="saveCustomer()" class="btn btn-success">Submit</button>
+      <button (click)="saveCustomer()" class="btn btn-success mr-2">Add</button>
+      <button class="btn btn-secondary" (click)="goHome()">Home</button>
     </div>
 
     <div *ngIf="submitted">
       <h4>Added Successfully!</h4>
-      <button class="btn btn-success" (click)="newCustomer()">Add</button>
+      <button class="btn btn-success mr-2" (click)="newCustomer()">Add</button>
+      <button class="btn btn-secondary" (click)="goHome()">Home</button>
     </div>
   </div>
 </div>

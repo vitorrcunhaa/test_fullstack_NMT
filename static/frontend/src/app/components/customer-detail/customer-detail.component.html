@@ -14,13 +14,16 @@
       </div>
 
       <div class="form-group">
-        <label for="age">age</label>
+        <label for="age">Age</label>
         <input
           type="number"
           class="form-control"
           id="age"
           [(ngModel)]="currentCustomer.age"
           name="age"
+          [maxLength]=3
+          min="1"
+          max="150"
         />
       </div>
 
@@ -37,19 +40,19 @@
 
     </form>
 
-    <button class="badge badge-danger mr-2" (click)="deleteCustomer()">
+    <button type="submit" class="btn btn-success mr-2" (click)="updateCustomer()">
+      Update
+    </button>
+
+    <button class="btn btn-secondary mr-2" (click)="goHome();">
+      Cancel
+    </button>
+
+    <button class="btn btn-danger" (click)="deleteCustomer()">
       Delete
     </button>
 
-    <button
-      type="submit"
-      class="badge badge-success"
-      (click)="updateCustomer()"
-    >
-      Update
-    </button>
-    <br>
-    <p>{{ message }}</p>
+    <p style="margin-top: 20px;">{{ message }}</p>
   </div>
 
   <div *ngIf="!currentCustomer">

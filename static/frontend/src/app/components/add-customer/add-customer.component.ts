@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CustomerService} from 'src/app/services/customer.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-customer',
@@ -15,7 +16,7 @@ export class AddCustomerComponent implements OnInit {
   };
   submitted = false;
 
-  constructor(private customerService: CustomerService) {
+  constructor(private customerService: CustomerService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -46,6 +47,10 @@ export class AddCustomerComponent implements OnInit {
       age: 0,
       city: ''
     };
+  }
+
+  goHome(): void {
+    this.router.navigate(['/customers']);
   }
 
 }

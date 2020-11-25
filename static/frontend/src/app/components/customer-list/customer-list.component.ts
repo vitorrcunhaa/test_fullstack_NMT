@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {CustomerService} from 'src/app/services/customer.service';
 
+import {Observable, Subject} from 'rxjs';
+
 @Component({
   selector: 'app-customer-list',
   templateUrl: './customer-list.component.html',
@@ -9,20 +11,25 @@ import {CustomerService} from 'src/app/services/customer.service';
 export class CustomerListComponent implements OnInit {
 
   customers: any;
-  currentCustomer = {
-    id: -1,
-    name: '',
-    age: 0,
-    city: ''
-  };
-  currentIndex = -1;
-  name = '';
+  dtOptions: DataTables.Settings = {};
+  // @ts-ignore
+  dtTrigger: Subject = new Subject();
 
   constructor(private customerService: CustomerService) {
   }
 
   ngOnInit(): void {
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      language: {
+        searchPlaceholder: 'Filter by Id, Name, City or Age',
+      },
+    };
     this.retrieveCustomers();
+  }
+
+   ngOnDestroy(): void {
+    this.dtTrigger.unsubscribe();
   }
 
   retrieveCustomers(): void {
@@ -30,53 +37,11 @@ export class CustomerListComponent implements OnInit {
       .subscribe(
         data => {
           this.customers = data;
+          this.dtTrigger.next();
           console.log(data);
         },
         error => {
           console.log(error);
         });
   }
-
-  refreshList(): void {
-    this.retrieveCustomers();
-    this.currentCustomer = {
-    id: -1,
-    name: '',
-    age: 0,
-    city: ''
-  };
-    this.currentIndex = -1;
-  }
-
-  // @ts-ignore
-  setActiveCustomer(customer, index): void {
-    this.currentCustomer = customer;
-    this.currentIndex = index;
-  }
-
-  // removeAllCustomers(): void {
-  //   this.customerService.deleteAll()
-  //     .subscribe(
-  //       response => {
-  //         console.log(response);
-  //         this.retrieveCustomers();
-  //       },
-  //       error => {
-  //         console.log(error);
-  //       });
-  // }
-
-  searchName(): void {
-    this.customerService.findByName(this.name)
-      .subscribe(
-        data => {
-          this.customers = data;
-          console.log(data);
-        },
-        error => {
-          console.log(error);
-        });
-  }
-
-
 }
