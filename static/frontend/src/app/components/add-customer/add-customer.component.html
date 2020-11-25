@@ -17,15 +17,15 @@
       <div class="form-group">
         <label for="age">Age</label>
         <input type="number"
-          class="form-control"
-          id="age"
-          required="required"
-          [(ngModel)]="customer.age"
-          name="age"
-          placeholder="30"
-         [maxLength]=3
-          min="1"
-          max="150"
+               class="form-control"
+               id="age"
+               required="required"
+               [(ngModel)]="customer.age"
+               name="age"
+               placeholder="30"
+               [maxLength]=3
+               min="1"
+               max="150"
         />
       </div>
 
@@ -43,10 +43,11 @@
 
       <button (click)="saveCustomer()" class="btn btn-success mr-2">Add</button>
       <button class="btn btn-secondary" (click)="goHome()">Home</button>
+      <p class="{{message_class}}" style="margin-top: 20px;">{{ message }}</p>
     </div>
 
     <div *ngIf="submitted">
-      <h4>Added Successfully!</h4>
+      <p class="{{message_class}}" style="margin-top: 20px;">{{ message }}</p>
       <button class="btn btn-success mr-2" (click)="newCustomer()">Add</button>
       <button class="btn btn-secondary" (click)="goHome()">Home</button>
     </div>

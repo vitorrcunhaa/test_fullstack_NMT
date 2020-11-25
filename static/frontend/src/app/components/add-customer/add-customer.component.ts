@@ -15,6 +15,8 @@ export class AddCustomerComponent implements OnInit {
     city: ''
   };
   submitted = false;
+  message = '';
+  message_class = '';
 
   constructor(private customerService: CustomerService, private router: Router) {
   }
@@ -33,9 +35,17 @@ export class AddCustomerComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response);
+          this.message_class = 'alert alert-success';
+          this.message = 'The customer ' + this.customer.name + ' was added successfully!';
           this.submitted = true;
         },
         error => {
+          Object.keys(error.error)
+            // tslint:disable-next-line:typedef
+            .forEach((key) => {
+              this.message = key + ': ' + error.error[key];
+            });
+          this.message_class = 'alert alert-danger';
           console.log(error);
         });
   }

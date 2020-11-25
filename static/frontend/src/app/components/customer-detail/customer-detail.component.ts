@@ -16,6 +16,7 @@ export class CustomerDetailComponent implements OnInit {
     city: ''
   };
   message = '';
+  message_class = '';
 
   constructor(
     private customerService: CustomerService,
@@ -37,6 +38,7 @@ export class CustomerDetailComponent implements OnInit {
           this.currentCustomer = data;
         },
         error => {
+          alert(error);
           console.log(error);
         });
   }
@@ -46,9 +48,16 @@ export class CustomerDetailComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response);
+          this.message_class = 'alert alert-success';
           this.message = 'The customer ' + this.currentCustomer.name + ' was updated successfully!';
         },
         error => {
+          Object.keys(error.error)
+            // tslint:disable-next-line:typedef
+            .forEach((key) => {
+              this.message = key + ': ' + error.error[key];
+            });
+          this.message_class = 'alert alert-danger';
           console.log(error);
         });
   }
@@ -58,10 +67,12 @@ export class CustomerDetailComponent implements OnInit {
     this.customerService.delete(this.currentCustomer.id)
       .subscribe(
         response => {
+          alert('Customer deleted successfully!');
           console.log(response);
           this.router.navigate(['/customers']);
         },
         error => {
+          alert('Could not delete customer: ' + error);
           console.log(error);
         });
   }

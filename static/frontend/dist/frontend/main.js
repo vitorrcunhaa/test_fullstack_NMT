@@ -209,6 +209,9 @@ function AddCustomerComponent_div_2_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AddCustomerComponent_div_2_Template_button_click_15_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r3); const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r7.goHome(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](16, "Home");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "p", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
@@ -218,12 +221,16 @@ function AddCustomerComponent_div_2_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r0.customer.age)("maxLength", 3);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r0.customer.city);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMap"](ctx_r0.message_class);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r0.message);
 } }
 function AddCustomerComponent_div_3_Template(rf, ctx) { if (rf & 1) {
     const _r9 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "h4");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Added Successfully!");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "p", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "button", 10);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AddCustomerComponent_div_3_Template_button_click_3_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r9); const ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r8.newCustomer(); });
@@ -234,6 +241,12 @@ function AddCustomerComponent_div_3_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "Home");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMap"](ctx_r1.message_class);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r1.message);
 } }
 class AddCustomerComponent {
     constructor(customerService, router) {
@@ -245,6 +258,8 @@ class AddCustomerComponent {
             city: ''
         };
         this.submitted = false;
+        this.message = '';
+        this.message_class = '';
     }
     ngOnInit() {
     }
@@ -257,8 +272,16 @@ class AddCustomerComponent {
         this.customerService.create(data)
             .subscribe(response => {
             console.log(response);
+            this.message_class = 'alert alert-success';
+            this.message = 'The customer ' + this.customer.name + ' was added successfully!';
             this.submitted = true;
         }, error => {
+            Object.keys(error.error)
+                // tslint:disable-next-line:typedef
+                .forEach((key) => {
+                this.message = key + ': ' + error.error[key];
+            });
+            this.message_class = 'alert alert-danger';
             console.log(error);
         });
     }
@@ -275,11 +298,11 @@ class AddCustomerComponent {
     }
 }
 AddCustomerComponent.ɵfac = function AddCustomerComponent_Factory(t) { return new (t || AddCustomerComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_customer_service__WEBPACK_IMPORTED_MODULE_1__["CustomerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"])); };
-AddCustomerComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AddCustomerComponent, selectors: [["app-add-customer"]], decls: 4, vars: 2, consts: [[2, "width", "400px", "margin", "auto"], [1, "submit-form"], [4, "ngIf"], [1, "form-group"], ["for", "name"], ["type", "text", "id", "name", "required", "required", "name", "name", "placeholder", "Joao Silva", 1, "form-control", 3, "ngModel", "ngModelChange"], ["for", "age"], ["type", "number", "id", "age", "required", "required", "name", "age", "placeholder", "30", "min", "1", "max", "150", 1, "form-control", 3, "ngModel", "maxLength", "ngModelChange"], ["for", "city"], ["id", "city", "required", "required", "name", "city", "placeholder", "Floripa", 1, "form-control", 3, "ngModel", "ngModelChange"], [1, "btn", "btn-success", "mr-2", 3, "click"], [1, "btn", "btn-secondary", 3, "click"]], template: function AddCustomerComponent_Template(rf, ctx) { if (rf & 1) {
+AddCustomerComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AddCustomerComponent, selectors: [["app-add-customer"]], decls: 4, vars: 2, consts: [[2, "width", "400px", "margin", "auto"], [1, "submit-form"], [4, "ngIf"], [1, "form-group"], ["for", "name"], ["type", "text", "id", "name", "required", "required", "name", "name", "placeholder", "Joao Silva", 1, "form-control", 3, "ngModel", "ngModelChange"], ["for", "age"], ["type", "number", "id", "age", "required", "required", "name", "age", "placeholder", "30", "min", "1", "max", "150", 1, "form-control", 3, "ngModel", "maxLength", "ngModelChange"], ["for", "city"], ["id", "city", "required", "required", "name", "city", "placeholder", "Floripa", 1, "form-control", 3, "ngModel", "ngModelChange"], [1, "btn", "btn-success", "mr-2", 3, "click"], [1, "btn", "btn-secondary", 3, "click"], [2, "margin-top", "20px"]], template: function AddCustomerComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, AddCustomerComponent_div_2_Template, 17, 4, "div", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, AddCustomerComponent_div_3_Template, 7, 0, "div", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, AddCustomerComponent_div_2_Template, 19, 8, "div", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, AddCustomerComponent_div_3_Template, 7, 4, "div", 2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     } if (rf & 2) {
@@ -610,7 +633,9 @@ function CustomerDetailComponent_div_1_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r0.currentCustomer.age)("maxLength", 3);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r0.currentCustomer.city);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMap"](ctx_r0.message_class);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r0.message);
 } }
 function CustomerDetailComponent_div_2_Template(rf, ctx) { if (rf & 1) {
@@ -633,6 +658,7 @@ class CustomerDetailComponent {
             city: ''
         };
         this.message = '';
+        this.message_class = '';
     }
     ngOnInit() {
         this.message = '';
@@ -645,6 +671,7 @@ class CustomerDetailComponent {
             console.log(data);
             this.currentCustomer = data;
         }, error => {
+            alert(error);
             console.log(error);
         });
     }
@@ -652,8 +679,15 @@ class CustomerDetailComponent {
         this.customerService.update(this.currentCustomer.id, this.currentCustomer)
             .subscribe(response => {
             console.log(response);
+            this.message_class = 'alert alert-success';
             this.message = 'The customer ' + this.currentCustomer.name + ' was updated successfully!';
         }, error => {
+            Object.keys(error.error)
+                // tslint:disable-next-line:typedef
+                .forEach((key) => {
+                this.message = key + ': ' + error.error[key];
+            });
+            this.message_class = 'alert alert-danger';
             console.log(error);
         });
     }
@@ -661,9 +695,11 @@ class CustomerDetailComponent {
         // @ts-ignore
         this.customerService.delete(this.currentCustomer.id)
             .subscribe(response => {
+            alert('Customer deleted successfully!');
             console.log(response);
             this.router.navigate(['/customers']);
         }, error => {
+            alert('Could not delete customer: ' + error);
             console.log(error);
         });
     }
@@ -674,7 +710,7 @@ class CustomerDetailComponent {
 CustomerDetailComponent.ɵfac = function CustomerDetailComponent_Factory(t) { return new (t || CustomerDetailComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_customer_service__WEBPACK_IMPORTED_MODULE_1__["CustomerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"])); };
 CustomerDetailComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: CustomerDetailComponent, selectors: [["app-customer-detail"]], decls: 3, vars: 2, consts: [[2, "width", "400px", "margin", "auto"], ["class", "edit-form", 4, "ngIf"], [4, "ngIf"], [1, "edit-form"], [1, "form-group"], ["for", "name"], ["type", "text", "id", "name", "name", "name", 1, "form-control", 3, "ngModel", "ngModelChange"], ["for", "age"], ["type", "number", "id", "age", "name", "age", "min", "1", "max", "150", 1, "form-control", 3, "ngModel", "maxLength", "ngModelChange"], ["for", "city"], ["type", "text", "id", "city", "name", "city", 1, "form-control", 3, "ngModel", "ngModelChange"], ["type", "submit", 1, "btn", "btn-success", "mr-2", 3, "click"], [1, "btn", "btn-secondary", "mr-2", 3, "click"], [1, "btn", "btn-danger", 3, "click"], [2, "margin-top", "20px"]], template: function CustomerDetailComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, CustomerDetailComponent_div_1_Template, 24, 5, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, CustomerDetailComponent_div_1_Template, 24, 8, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, CustomerDetailComponent_div_2_Template, 4, 0, "div", 2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     } if (rf & 2) {
