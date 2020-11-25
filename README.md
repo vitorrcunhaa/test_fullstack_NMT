@@ -26,6 +26,9 @@ This way, when building the dist files for the backend to read, it's going to ac
 
 Go to `static/frontend` folder
 
+Install angular-cli globally:
+`npm install -g @angular/cli`
+
 Run `npm install`
 
 Run `ng build`
