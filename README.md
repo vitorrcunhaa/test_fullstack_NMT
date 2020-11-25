@@ -36,7 +36,7 @@ Run `ng build`
 
 ## Setup Django web
 
-Go to `test_fullstack_NMT dir`
+Go to `test_fullstack_NMT` dir`
 
 
 To run the Django app on your local computer, set up a Python development environment, including Python, pip, and virtualenv.
